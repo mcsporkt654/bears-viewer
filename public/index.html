@@ -43,10 +43,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
 
-    .bears-logo {
-      font-size: 40px;
-      line-height: 1;
-    }
+    .bears-logo { font-size: 40px; line-height: 1; }
 
     .header-text h1 {
       font-size: 22px;
@@ -55,11 +52,7 @@
       letter-spacing: -0.5px;
     }
 
-    .header-text p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
+    .header-text p { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
     .header-badge {
       margin-left: auto;
@@ -102,11 +95,7 @@
     .nav-tab.active { color: var(--orange); border-bottom-color: var(--orange); }
 
     /* MAIN */
-    main {
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    main { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
     /* SECTION HEADERS */
     .section-title {
@@ -161,78 +150,177 @@
       text-align: center;
     }
 
-    .pos-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      flex: 1;
-    }
+    .pos-name { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
 
-    .pos-toggle {
-      color: var(--muted);
-      font-size: 11px;
-      transition: transform .2s;
-    }
-
+    .pos-toggle { color: var(--muted); font-size: 11px; transition: transform .2s; }
     .position-header.collapsed .pos-toggle { transform: rotate(-90deg); }
 
+    /* DEPTH CHART ROW */
     .depth-chart {
       display: flex;
       gap: 0;
       flex-wrap: wrap;
+      padding: 10px;
+      gap: 8px;
     }
 
-    .depth-slot {
+    /* ── SLEEPER-STYLE PLAYER CARD ── */
+    .player-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      min-width: 130px;
+      max-width: 160px;
       flex: 1;
-      min-width: 140px;
-      padding: 12px 14px;
-      border-right: 1px solid var(--border);
       position: relative;
+      transition: transform .15s, box-shadow .15s;
     }
 
-    .depth-slot:last-child { border-right: none; }
+    .player-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
 
-    .depth-rank {
-      font-size: 9px;
+    .player-card.is-starter {
+      border-color: rgba(226,119,34,0.35);
+      background: linear-gradient(160deg, #1a2f4a 0%, #162840 100%);
+    }
+
+    .player-card.is-backup {
+      opacity: 0.85;
+    }
+
+    .player-card.is-depth {
+      opacity: 0.7;
+      transform: scale(0.97);
+      max-width: 140px;
+      min-width: 110px;
+    }
+
+    /* Depth rank badge (top-right corner) */
+    .depth-badge {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      font-size: 8px;
       font-weight: 800;
-      letter-spacing: .1em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      padding: 2px 6px;
+      border-radius: 99px;
     }
 
-    .rank-1 { color: var(--orange); }
-    .rank-2 { color: var(--backup); }
-    .rank-3 { color: var(--depth3); }
-    .rank-4 { color: #445; }
-    .rank-5 { color: #334; }
+    .depth-badge.rank-1 { background: var(--orange); color: #fff; }
+    .depth-badge.rank-2 { background: var(--backup); color: #fff; }
+    .depth-badge.rank-3 { background: #2a4060; color: var(--depth3); border: 1px solid var(--depth3); }
+    .depth-badge.rank-4 { background: #1a2d45; color: #445; border: 1px solid #2a3f5a; }
+    .depth-badge.rank-5 { background: #162030; color: #334; border: 1px solid #233; }
 
-    .player-name {
-      font-size: 13px;
+    /* Headshot circle */
+    .headshot-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: var(--navy);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .player-card.is-starter .headshot-wrap {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 2px rgba(226,119,34,0.25);
+    }
+
+    .headshot-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Player info */
+    .card-info { text-align: center; width: 100%; }
+
+    .card-name {
+      font-size: 12px;
       font-weight: 700;
       color: var(--text);
-      line-height: 1.3;
+      line-height: 1.2;
+      margin-bottom: 2px;
     }
 
-    .player-number {
+    .card-meta {
       font-size: 10px;
       color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .jersey-num {
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .card-note {
+      font-size: 9px;
+      color: rgba(226,119,34,0.7);
+      font-style: italic;
       margin-top: 2px;
+      text-align: center;
     }
 
-    .player-note {
+    /* ── STATS PILLS ── */
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      margin-top: 4px;
+      width: 100%;
+    }
+
+    .stat-pill {
+      background: #0d1e33;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 2px 7px;
+      text-align: center;
+    }
+
+    .stat-val {
       font-size: 10px;
-      color: #e8822280;
-      margin-top: 3px;
-      font-style: italic;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+      line-height: 1.2;
     }
 
-    .empty-slot {
-      color: #2a3f5a;
-      font-size: 11px;
-      font-style: italic;
+    .stat-label {
+      font-size: 8px;
+      color: var(--muted);
+      display: block;
+      line-height: 1;
     }
 
-    /* COACHING CARD */
+    /* Orange = top 10, Gold = top 3 */
+    .stat-pill.top10 { border-color: rgba(226,119,34,0.5); background: rgba(226,119,34,0.08); }
+    .stat-pill.top10 .stat-val { color: var(--orange); }
+
+    .stat-pill.top3 { border-color: var(--gold); background: rgba(245,166,35,0.12); }
+    .stat-pill.top3 .stat-val { color: var(--gold); }
+
+    /* COACHING */
     .coaching-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -256,11 +344,7 @@
       margin-bottom: 4px;
     }
 
-    .coach-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-    }
+    .coach-name { font-size: 14px; font-weight: 700; color: var(--text); }
 
     /* LEGEND */
     .legend {
@@ -282,15 +366,12 @@
       color: var(--muted);
     }
 
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
     .dot-starter { background: var(--orange); }
     .dot-backup { background: var(--backup); }
     .dot-depth { background: var(--depth3); }
+    .dot-top10 { background: var(--orange); }
+    .dot-top3 { background: var(--gold); }
 
     /* VIEW panels */
     .view { display: none; }
@@ -298,8 +379,10 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      .depth-slot { min-width: 120px; }
+      .player-card { min-width: 110px; max-width: 140px; }
+      .headshot-wrap { width: 52px; height: 52px; }
       .header-text h1 { font-size: 18px; }
+      .depth-chart { gap: 6px; }
     }
 
     ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -324,13 +407,15 @@
   <button class="nav-tab" data-view="coaching">🎓 Coaching Staff</button>
 </div>
 
-<!-- OFFENSE -->
+<!-- ══════════════════ OFFENSE ══════════════════ -->
 <div class="view active" id="view-offense">
   <main>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot dot-starter"></div> Starter</div>
       <div class="legend-item"><div class="legend-dot dot-backup"></div> Backup</div>
       <div class="legend-item"><div class="legend-dot dot-depth"></div> Depth</div>
+      <div class="legend-item" style="margin-left:12px"><div class="legend-dot dot-top10" style="border-radius:3px"></div> Top-10 rank</div>
+      <div class="legend-item"><div class="legend-dot dot-top3" style="border-radius:3px;background:var(--gold)"></div> Top-3 rank</div>
     </div>
 
     <div class="section-title">Quarterback</div>
@@ -341,20 +426,43 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Caleb Williams</div>
-          <div class="player-number">#18</div>
+        <!-- Caleb Williams — ESPN 4431611 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4431611.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Caleb Williams"
+                 onerror="this.parentNode.innerHTML=svgAvatar('18','CW')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Caleb Williams</div>
+            <div class="card-meta"><span class="jersey-num">#18</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">3,541</span><span class="stat-label">Pass Yds • 15th</span></div>
+            <div class="stat-pill"><span class="stat-val">20 TDs</span><span class="stat-label">17th NFL</span></div>
+            <div class="stat-pill"><span class="stat-val">63.5%</span><span class="stat-label">Comp • 18th</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Tyson Bagent</div>
-          <div class="player-number">#17</div>
+
+        <!-- Tyson Bagent — placeholder -->
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-bagent"></div>
+          <div class="card-info">
+            <div class="card-name">Tyson Bagent</div>
+            <div class="card-meta"><span class="jersey-num">#17</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Case Keenum</div>
-          <div class="player-number">#11</div>
+
+        <!-- Case Keenum — placeholder -->
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-keenum"></div>
+          <div class="card-info">
+            <div class="card-name">Case Keenum</div>
+            <div class="card-meta"><span class="jersey-num">#11</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -367,25 +475,50 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">D'Andre Swift</div>
-          <div class="player-number">#4</div>
+        <!-- D'Andre Swift — ESPN 4040715 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4040715.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="D'Andre Swift"
+                 onerror="this.parentNode.innerHTML=svgAvatar('4','DS')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">D'Andre Swift</div>
+            <div class="card-meta"><span class="jersey-num">#4</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top10"><span class="stat-val">1,049</span><span class="stat-label">Rush Yds • 8th</span></div>
+            <div class="stat-pill"><span class="stat-val">5 TDs</span><span class="stat-label">12th NFL</span></div>
+            <div class="stat-pill"><span class="stat-val">4.3 YPC</span><span class="stat-label">Avg/Carry</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Kyle Monangai</div>
-          <div class="player-number">#25</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-monangai"></div>
+          <div class="card-info">
+            <div class="card-name">Kyle Monangai</div>
+            <div class="card-meta"><span class="jersey-num">#25</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Roschon Johnson</div>
-          <div class="player-number">#23</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-rjohnson"></div>
+          <div class="card-info">
+            <div class="card-name">Roschon Johnson</div>
+            <div class="card-meta"><span class="jersey-num">#23</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-4">4th</div>
-          <div class="player-name">Brittain Brown</div>
-          <div class="player-number">#38</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-4">4th</span>
+          <div class="headshot-wrap" id="hs-bbrown"></div>
+          <div class="card-info">
+            <div class="card-name">Brittain Brown</div>
+            <div class="card-meta"><span class="jersey-num">#38</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -399,21 +532,30 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Theo Benedet</div>
-          <div class="player-number">#79</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-benedet"></div>
+          <div class="card-info">
+            <div class="card-name">Theo Benedet</div>
+            <div class="card-meta"><span class="jersey-num">#79</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Ozzy Trapilo</div>
-          <div class="player-number">#75</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-trapilo"></div>
+          <div class="card-info">
+            <div class="card-name">Ozzy Trapilo</div>
+            <div class="card-meta"><span class="jersey-num">#75</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Jedrick Wills Jr.</div>
-          <div class="player-number"></div>
-          <div class="player-note">FA signing</div>
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-wills"></div>
+          <div class="card-info">
+            <div class="card-name">Jedrick Wills Jr.</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">FA signing</div>
+          </div>
         </div>
       </div>
     </div>
@@ -425,16 +567,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Joe Thuney</div>
-          <div class="player-number">#62</div>
-          <div class="player-note">Signed from KC</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-thuney"></div>
+          <div class="card-info">
+            <div class="card-name">Joe Thuney</div>
+            <div class="card-meta"><span class="jersey-num">#62</span></div>
+            <div class="card-note">Signed from KC</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Jordan McFadden</div>
-          <div class="player-number">#74</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-mcfadden"></div>
+          <div class="card-info">
+            <div class="card-name">Jordan McFadden</div>
+            <div class="card-meta"><span class="jersey-num">#74</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -446,16 +594,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Garrett Bradbury</div>
-          <div class="player-number">#60</div>
-          <div class="player-note">Signed from NE</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-bradbury"></div>
+          <div class="card-info">
+            <div class="card-name">Garrett Bradbury</div>
+            <div class="card-meta"><span class="jersey-num">#60</span></div>
+            <div class="card-note">Signed from NE</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Kyle Hergel</div>
-          <div class="player-number">#60</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-hergel"></div>
+          <div class="card-info">
+            <div class="card-name">Kyle Hergel</div>
+            <div class="card-meta"><span class="jersey-num">#60</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -467,16 +621,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Jonah Jackson</div>
-          <div class="player-number">#73</div>
-          <div class="player-note">Signed from LAR</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-jjackson"></div>
+          <div class="card-info">
+            <div class="card-name">Jonah Jackson</div>
+            <div class="card-meta"><span class="jersey-num">#73</span></div>
+            <div class="card-note">Signed from LAR</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Luke Newman</div>
-          <div class="player-number">#65</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-newman"></div>
+          <div class="card-info">
+            <div class="card-name">Luke Newman</div>
+            <div class="card-meta"><span class="jersey-num">#65</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -488,20 +648,34 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Darnell Wright</div>
-          <div class="player-number">#58</div>
+        <!-- Darnell Wright — ESPN 4569618 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4569618.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Darnell Wright"
+                 onerror="this.parentNode.innerHTML=svgAvatar('58','DW')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Darnell Wright</div>
+            <div class="card-meta"><span class="jersey-num">#58</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Braxton Jones</div>
-          <div class="player-number">#70</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-bjones"></div>
+          <div class="card-info">
+            <div class="card-name">Braxton Jones</div>
+            <div class="card-meta"><span class="jersey-num">#70</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Kiran Amegadjie</div>
-          <div class="player-number">#72</div>
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-amegadjie"></div>
+          <div class="card-info">
+            <div class="card-name">Kiran Amegadjie</div>
+            <div class="card-meta"><span class="jersey-num">#72</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -515,15 +689,32 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Rome Odunze</div>
-          <div class="player-number">#15</div>
+        <!-- Rome Odunze — ESPN 4685720 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685720.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Rome Odunze"
+                 onerror="this.parentNode.innerHTML=svgAvatar('15','RO')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Rome Odunze</div>
+            <div class="card-meta"><span class="jersey-num">#15</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">862 Yds</span><span class="stat-label">Rec • 14th</span></div>
+            <div class="stat-pill"><span class="stat-val">7 TDs</span><span class="stat-label">Receiving</span></div>
+            <div class="stat-pill"><span class="stat-val">68 Rec</span><span class="stat-label">Receptions</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Jahdae Walker</div>
-          <div class="player-number">#24</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-walker"></div>
+          <div class="card-info">
+            <div class="card-name">Jahdae Walker</div>
+            <div class="card-meta"><span class="jersey-num">#24</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -535,15 +726,31 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Luther Burden III</div>
-          <div class="player-number">#10</div>
+        <!-- Luther Burden III — ESPN 4686629 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4686629.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Luther Burden III"
+                 onerror="this.parentNode.innerHTML=svgAvatar('10','LB')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Luther Burden III</div>
+            <div class="card-meta"><span class="jersey-num">#10</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">612 Yds</span><span class="stat-label">Rec Yards</span></div>
+            <div class="stat-pill"><span class="stat-val">4 TDs</span><span class="stat-label">Rookie Year</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Maurice Alexander</div>
-          <div class="player-number"></div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-malexander"></div>
+          <div class="card-info">
+            <div class="card-name">Maurice Alexander</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -555,16 +762,28 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Kalif Raymond</div>
-          <div class="player-number"></div>
-          <div class="player-note">Signed from Det</div>
+        <!-- Kalif Raymond — no known ESPN ID, use placeholder -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-raymond"></div>
+          <div class="card-info">
+            <div class="card-name">Kalif Raymond</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">Signed from Det</div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">389 Yds</span><span class="stat-label">Rec Yards</span></div>
+            <div class="stat-pill"><span class="stat-val">3 TDs</span><span class="stat-label">Receiving</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">JP Richardson</div>
-          <div class="player-number">#83</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-jprichardson"></div>
+          <div class="card-info">
+            <div class="card-name">JP Richardson</div>
+            <div class="card-meta"><span class="jersey-num">#83</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -576,38 +795,73 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Colston Loveland</div>
-          <div class="player-number">#84</div>
+        <!-- Colston Loveland — ESPN 4685529 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4685529.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Colston Loveland"
+                 onerror="this.parentNode.innerHTML=svgAvatar('84','CL')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Colston Loveland</div>
+            <div class="card-meta"><span class="jersey-num">#84</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top10"><span class="stat-val">634 Yds</span><span class="stat-label">Rec • 8th TE</span></div>
+            <div class="stat-pill"><span class="stat-val">5 TDs</span><span class="stat-label">Rookie Year</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Cole Kmet</div>
-          <div class="player-number">#85</div>
+
+        <!-- Cole Kmet — ESPN 4241389 -->
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4241389.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Cole Kmet"
+                 onerror="this.parentNode.innerHTML=svgAvatar('85','CK')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Cole Kmet</div>
+            <div class="card-meta"><span class="jersey-num">#85</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">421 Yds</span><span class="stat-label">Rec Yards</span></div>
+            <div class="stat-pill"><span class="stat-val">3 TDs</span><span class="stat-label">Receiving</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Nikola Kalinic</div>
-          <div class="player-number">#86</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-kalinic"></div>
+          <div class="card-info">
+            <div class="card-name">Nikola Kalinic</div>
+            <div class="card-meta"><span class="jersey-num">#86</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-4">4th</div>
-          <div class="player-name">Qadir Ismail</div>
-          <div class="player-number">#80</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-4">4th</span>
+          <div class="headshot-wrap" id="hs-ismail"></div>
+          <div class="card-info">
+            <div class="card-name">Qadir Ismail</div>
+            <div class="card-meta"><span class="jersey-num">#80</span></div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- DEFENSE -->
+<!-- ══════════════════ DEFENSE ══════════════════ -->
 <div class="view" id="view-defense">
   <main>
     <div class="legend">
       <div class="legend-item"><div class="legend-dot dot-starter"></div> Starter</div>
       <div class="legend-item"><div class="legend-dot dot-backup"></div> Backup</div>
       <div class="legend-item"><div class="legend-dot dot-depth"></div> Depth</div>
+      <div class="legend-item" style="margin-left:12px"><div class="legend-dot dot-top10" style="border-radius:3px"></div> Top-10 rank</div>
+      <div class="legend-item"><div class="legend-dot dot-top3" style="border-radius:3px;background:var(--gold)"></div> Top-3 rank</div>
     </div>
 
     <div class="section-title">Defensive Line (Base 4-3)</div>
@@ -619,25 +873,49 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Montez Sweat</div>
-          <div class="player-number">#98</div>
+        <!-- Montez Sweat — ESPN 3929873 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3929873.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Montez Sweat"
+                 onerror="this.parentNode.innerHTML=svgAvatar('98','MS')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Montez Sweat</div>
+            <div class="card-meta"><span class="jersey-num">#98</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top10"><span class="stat-val">11.0 Sacks</span><span class="stat-label">6th NFL</span></div>
+            <div class="stat-pill"><span class="stat-val">3 FF</span><span class="stat-label">Forced Fum.</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Daniel Hardy</div>
-          <div class="player-number">#92</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-dhardy"></div>
+          <div class="card-info">
+            <div class="card-name">Daniel Hardy</div>
+            <div class="card-meta"><span class="jersey-num">#92</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Jamree Kromah</div>
-          <div class="player-number">#59</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-kromah"></div>
+          <div class="card-info">
+            <div class="card-name">Jamree Kromah</div>
+            <div class="card-meta"><span class="jersey-num">#59</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-4">4th</div>
-          <div class="player-name">Jeremiah Martin</div>
-          <div class="player-number">#69</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-4">4th</span>
+          <div class="headshot-wrap" id="hs-jmartin"></div>
+          <div class="card-info">
+            <div class="card-name">Jeremiah Martin</div>
+            <div class="card-meta"><span class="jersey-num">#69</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -649,16 +927,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Gervon Dexter Sr.</div>
-          <div class="player-number">#99</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-dexter"></div>
+          <div class="card-info">
+            <div class="card-name">Gervon Dexter Sr.</div>
+            <div class="card-meta"><span class="jersey-num">#99</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Neville Gallimore</div>
-          <div class="player-number"></div>
-          <div class="player-note">FA signing</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-gallimore"></div>
+          <div class="card-info">
+            <div class="card-name">Neville Gallimore</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">FA signing</div>
+          </div>
         </div>
       </div>
     </div>
@@ -670,22 +954,37 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Grady Jarrett</div>
-          <div class="player-number">#50</div>
-          <div class="player-note">Signed from ATL</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-gjarrett"></div>
+          <div class="card-info">
+            <div class="card-name">Grady Jarrett</div>
+            <div class="card-meta"><span class="jersey-num">#50</span></div>
+            <div class="card-note">Signed from ATL</div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">5.5 Sacks</span><span class="stat-label">2025 Season</span></div>
+            <div class="stat-pill"><span class="stat-val">42 Tkl</span><span class="stat-label">Tackles</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Kentavius Street</div>
-          <div class="player-number"></div>
-          <div class="player-note">FA signing</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-kstreet"></div>
+          <div class="card-info">
+            <div class="card-name">Kentavius Street</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">FA signing</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Shemar Turner</div>
-          <div class="player-number">#95</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-sturner"></div>
+          <div class="card-info">
+            <div class="card-name">Shemar Turner</div>
+            <div class="card-meta"><span class="jersey-num">#95</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -697,21 +996,35 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Dayo Odeyingbo</div>
-          <div class="player-number">#55</div>
-          <div class="player-note">Signed from IND</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-odeyingbo"></div>
+          <div class="card-info">
+            <div class="card-name">Dayo Odeyingbo</div>
+            <div class="card-meta"><span class="jersey-num">#55</span></div>
+            <div class="card-note">Signed from IND</div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top10"><span class="stat-val">8.0 Sacks</span><span class="stat-label">2025 Season</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Austin Booker</div>
-          <div class="player-number">#94</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-abooker"></div>
+          <div class="card-info">
+            <div class="card-name">Austin Booker</div>
+            <div class="card-meta"><span class="jersey-num">#94</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Jonathan Garvin</div>
-          <div class="player-number">#57</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-jgarvin"></div>
+          <div class="card-info">
+            <div class="card-name">Jonathan Garvin</div>
+            <div class="card-meta"><span class="jersey-num">#57</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -725,20 +1038,40 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">T.J. Edwards</div>
-          <div class="player-number">#53</div>
+        <!-- T.J. Edwards — ESPN 3054112 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3054112.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="T.J. Edwards"
+                 onerror="this.parentNode.innerHTML=svgAvatar('53','TE')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">T.J. Edwards</div>
+            <div class="card-meta"><span class="jersey-num">#53</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top10"><span class="stat-val">142 Tkl</span><span class="stat-label">4th NFL</span></div>
+            <div class="stat-pill"><span class="stat-val">2 INTs</span><span class="stat-label">Interceptions</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">D'Marco Jackson</div>
-          <div class="player-number">#48</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-dmjackson"></div>
+          <div class="card-info">
+            <div class="card-name">D'Marco Jackson</div>
+            <div class="card-meta"><span class="jersey-num">#48</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Nephi Sewell</div>
-          <div class="player-number">#96</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-nsewell"></div>
+          <div class="card-info">
+            <div class="card-name">Nephi Sewell</div>
+            <div class="card-meta"><span class="jersey-num">#96</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -750,21 +1083,30 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Devin Bush</div>
-          <div class="player-number"></div>
-          <div class="player-note">FA signing</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-dbush"></div>
+          <div class="card-info">
+            <div class="card-name">Devin Bush</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">FA signing</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Noah Sewell</div>
-          <div class="player-number">#44</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-nsewell2"></div>
+          <div class="card-info">
+            <div class="card-name">Noah Sewell</div>
+            <div class="card-meta"><span class="jersey-num">#44</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Ruben Hyppolite II</div>
-          <div class="player-number">#47</div>
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-hyppolite"></div>
+          <div class="card-info">
+            <div class="card-name">Ruben Hyppolite II</div>
+            <div class="card-meta"><span class="jersey-num">#47</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -778,20 +1120,40 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Jaylon Johnson</div>
-          <div class="player-number">#1</div>
+        <!-- Jaylon Johnson — ESPN 4240703 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4240703.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Jaylon Johnson"
+                 onerror="this.parentNode.innerHTML=svgAvatar('1','JJ')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Jaylon Johnson</div>
+            <div class="card-meta"><span class="jersey-num">#1</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top3"><span class="stat-val">4 INTs</span><span class="stat-label">T-3rd CB</span></div>
+            <div class="stat-pill top10"><span class="stat-val">14 PDs</span><span class="stat-label">Pass Def.</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Terell Smith</div>
-          <div class="player-number">#32</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-tsmith"></div>
+          <div class="card-info">
+            <div class="card-name">Terell Smith</div>
+            <div class="card-meta"><span class="jersey-num">#32</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Dallis Flowers</div>
-          <div class="player-number">#37</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-flowers"></div>
+          <div class="card-info">
+            <div class="card-name">Dallis Flowers</div>
+            <div class="card-meta"><span class="jersey-num">#37</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -803,20 +1165,36 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Tyrique Stevenson</div>
-          <div class="player-number">#29</div>
+        <!-- Tyrique Stevenson — ESPN 4430031 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4430031.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Tyrique Stevenson"
+                 onerror="this.parentNode.innerHTML=svgAvatar('29','TS')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Tyrique Stevenson</div>
+            <div class="card-meta"><span class="jersey-num">#29</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Zah Frazier</div>
-          <div class="player-number">#35</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-frazier"></div>
+          <div class="card-info">
+            <div class="card-name">Zah Frazier</div>
+            <div class="card-meta"><span class="jersey-num">#35</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Dontae Manning</div>
-          <div class="player-number">#27</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-manning"></div>
+          <div class="card-info">
+            <div class="card-name">Dontae Manning</div>
+            <div class="card-meta"><span class="jersey-num">#27</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -828,15 +1206,31 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Kyler Gordon</div>
-          <div class="player-number">#6</div>
+        <!-- Kyler Gordon — ESPN 4430807 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4430807.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Kyler Gordon"
+                 onerror="this.parentNode.innerHTML=svgAvatar('6','KG')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Kyler Gordon</div>
+            <div class="card-meta"><span class="jersey-num">#6</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">3 INTs</span><span class="stat-label">Interceptions</span></div>
+            <div class="stat-pill"><span class="stat-val">8 PDs</span><span class="stat-label">Pass Def.</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Josh Blackwell</div>
-          <div class="player-number">#39</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-jblackwell"></div>
+          <div class="card-info">
+            <div class="card-name">Josh Blackwell</div>
+            <div class="card-meta"><span class="jersey-num">#39</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -848,16 +1242,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Cam Lewis</div>
-          <div class="player-number"></div>
-          <div class="player-note">Signed from BUF</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-clewis"></div>
+          <div class="card-info">
+            <div class="card-name">Cam Lewis</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">Signed from BUF</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Gervarrius Owens</div>
-          <div class="player-number">#30</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-owens"></div>
+          <div class="card-info">
+            <div class="card-name">Gervarrius Owens</div>
+            <div class="card-meta"><span class="jersey-num">#30</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -869,25 +1269,38 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Coby Bryant</div>
-          <div class="player-number"></div>
-          <div class="player-note">Signed from SEA</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-cbryant"></div>
+          <div class="card-info">
+            <div class="card-name">Coby Bryant</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+            <div class="card-note">Signed from SEA</div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Elijah Hicks</div>
-          <div class="player-number">#22</div>
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-ehicks"></div>
+          <div class="card-info">
+            <div class="card-name">Elijah Hicks</div>
+            <div class="card-meta"><span class="jersey-num">#22</span></div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- SPECIAL TEAMS -->
+<!-- ══════════════════ SPECIAL TEAMS ══════════════════ -->
 <div class="view" id="view-special">
   <main>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot dot-starter"></div> Starter</div>
+      <div class="legend-item"><div class="legend-dot dot-backup"></div> Backup</div>
+      <div class="legend-item" style="margin-left:12px"><div class="legend-dot dot-top10" style="border-radius:3px"></div> Top-10 rank</div>
+      <div class="legend-item"><div class="legend-dot dot-top3" style="border-radius:3px;background:var(--gold)"></div> Top-3 rank</div>
+    </div>
+
     <div class="section-title">Special Teams</div>
 
     <div class="position-group">
@@ -897,10 +1310,22 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Cairo Santos</div>
-          <div class="player-number">#8</div>
+        <!-- Cairo Santos — ESPN 2576594 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2576594.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Cairo Santos"
+                 onerror="this.parentNode.innerHTML=svgAvatar('8','CS')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Cairo Santos</div>
+            <div class="card-meta"><span class="jersey-num">#8</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill"><span class="stat-val">87.5%</span><span class="stat-label">FG% • 18th</span></div>
+            <div class="stat-pill"><span class="stat-val">54 yds</span><span class="stat-label">Long FG</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -912,10 +1337,21 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Tory Taylor</div>
-          <div class="player-number">#19</div>
+        <!-- Tory Taylor — ESPN 4432743 -->
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432743.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Tory Taylor"
+                 onerror="this.parentNode.innerHTML=svgAvatar('19','TT')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Tory Taylor</div>
+            <div class="card-meta"><span class="jersey-num">#19</span></div>
+          </div>
+          <div class="stat-pills">
+            <div class="stat-pill top3"><span class="stat-val">47.8 Avg</span><span class="stat-label">3rd Punter NFL</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -927,10 +1363,13 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Luke Elkin</div>
-          <div class="player-number">#43</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-elkin"></div>
+          <div class="card-info">
+            <div class="card-name">Luke Elkin</div>
+            <div class="card-meta"><span class="jersey-num">#43</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -942,15 +1381,27 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Kalif Raymond</div>
-          <div class="player-number"></div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-raymond2"></div>
+          <div class="card-info">
+            <div class="card-name">Kalif Raymond</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Luther Burden III</div>
-          <div class="player-number">#10</div>
+
+        <!-- Luther Burden III — ESPN 4686629 -->
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4686629.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Luther Burden III"
+                 onerror="this.parentNode.innerHTML=svgAvatar('10','LB')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Luther Burden III</div>
+            <div class="card-meta"><span class="jersey-num">#10</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -962,20 +1413,31 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Kalif Raymond</div>
-          <div class="player-number"></div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap" id="hs-raymond3"></div>
+          <div class="card-info">
+            <div class="card-name">Kalif Raymond</div>
+            <div class="card-meta"><span class="jersey-num">—</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-2">2nd</div>
-          <div class="player-name">Josh Blackwell</div>
-          <div class="player-number">#39</div>
+
+        <div class="player-card is-backup">
+          <span class="depth-badge rank-2">2nd</span>
+          <div class="headshot-wrap" id="hs-jblackwell2"></div>
+          <div class="card-info">
+            <div class="card-name">Josh Blackwell</div>
+            <div class="card-meta"><span class="jersey-num">#39</span></div>
+          </div>
         </div>
-        <div class="depth-slot">
-          <div class="depth-rank rank-3">3rd</div>
-          <div class="player-name">Luther Burden III</div>
-          <div class="player-number">#10</div>
+
+        <div class="player-card is-depth">
+          <span class="depth-badge rank-3">3rd</span>
+          <div class="headshot-wrap" id="hs-lburden2"></div>
+          <div class="card-info">
+            <div class="card-name">Luther Burden III</div>
+            <div class="card-meta"><span class="jersey-num">#10</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -987,17 +1449,24 @@
         <span class="pos-toggle">▼</span>
       </div>
       <div class="depth-chart">
-        <div class="depth-slot">
-          <div class="depth-rank rank-1">Starter</div>
-          <div class="player-name">Tory Taylor</div>
-          <div class="player-number">#19</div>
+        <div class="player-card is-starter">
+          <span class="depth-badge rank-1">Starter</span>
+          <div class="headshot-wrap">
+            <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4432743.png&w=96&h=70&scale=crop&location=origin&transparent=true"
+                 alt="Tory Taylor"
+                 onerror="this.parentNode.innerHTML=svgAvatar('19','TT')">
+          </div>
+          <div class="card-info">
+            <div class="card-name">Tory Taylor</div>
+            <div class="card-meta"><span class="jersey-num">#19</span></div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- COACHING -->
+<!-- ══════════════════ COACHING ══════════════════ -->
 <div class="view" id="view-coaching">
   <main>
     <div class="section-title">Coaching Staff</div>
@@ -1055,7 +1524,78 @@
 </div>
 
 <script>
-  // Tab nav
+  /* ── SVG Avatar Generator ── */
+  function svgAvatar(number, initials) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+      <circle cx="32" cy="32" r="32" fill="#0b162a"/>
+      <text x="32" y="38" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="20" font-weight="800" fill="#e27722"
+        text-anchor="middle" dominant-baseline="middle">#${number}</text>
+    </svg>`;
+  }
+
+  /* ── Populate placeholder headshots via SVG ── */
+  const placeholders = {
+    'hs-bagent':      { num: '17', init: 'TB' },
+    'hs-keenum':      { num: '11', init: 'CK' },
+    'hs-monangai':    { num: '25', init: 'KM' },
+    'hs-rjohnson':    { num: '23', init: 'RJ' },
+    'hs-bbrown':      { num: '38', init: 'BB' },
+    'hs-benedet':     { num: '79', init: 'TB' },
+    'hs-trapilo':     { num: '75', init: 'OT' },
+    'hs-wills':       { num: '—',  init: 'JW' },
+    'hs-thuney':      { num: '62', init: 'JT' },
+    'hs-mcfadden':    { num: '74', init: 'JM' },
+    'hs-bradbury':    { num: '60', init: 'GB' },
+    'hs-hergel':      { num: '60', init: 'KH' },
+    'hs-jjackson':    { num: '73', init: 'JJ' },
+    'hs-newman':      { num: '65', init: 'LN' },
+    'hs-bjones':      { num: '70', init: 'BJ' },
+    'hs-amegadjie':   { num: '72', init: 'KA' },
+    'hs-walker':      { num: '24', init: 'JW' },
+    'hs-malexander':  { num: '—',  init: 'MA' },
+    'hs-raymond':     { num: '—',  init: 'KR' },
+    'hs-raymond2':    { num: '—',  init: 'KR' },
+    'hs-raymond3':    { num: '—',  init: 'KR' },
+    'hs-jprichardson':{ num: '83', init: 'JP' },
+    'hs-kalinic':     { num: '86', init: 'NK' },
+    'hs-ismail':      { num: '80', init: 'QI' },
+    'hs-dhardy':      { num: '92', init: 'DH' },
+    'hs-kromah':      { num: '59', init: 'JK' },
+    'hs-jmartin':     { num: '69', init: 'JM' },
+    'hs-dexter':      { num: '99', init: 'GD' },
+    'hs-gallimore':   { num: '—',  init: 'NG' },
+    'hs-gjarrett':    { num: '50', init: 'GJ' },
+    'hs-kstreet':     { num: '—',  init: 'KS' },
+    'hs-sturner':     { num: '95', init: 'ST' },
+    'hs-odeyingbo':   { num: '55', init: 'DO' },
+    'hs-abooker':     { num: '94', init: 'AB' },
+    'hs-jgarvin':     { num: '57', init: 'JG' },
+    'hs-dmjackson':   { num: '48', init: 'DJ' },
+    'hs-nsewell':     { num: '96', init: 'NS' },
+    'hs-dbush':       { num: '—',  init: 'DB' },
+    'hs-nsewell2':    { num: '44', init: 'NS' },
+    'hs-hyppolite':   { num: '47', init: 'RH' },
+    'hs-tsmith':      { num: '32', init: 'TS' },
+    'hs-flowers':     { num: '37', init: 'DF' },
+    'hs-frazier':     { num: '35', init: 'ZF' },
+    'hs-manning':     { num: '27', init: 'DM' },
+    'hs-jblackwell':  { num: '39', init: 'JB' },
+    'hs-jblackwell2': { num: '39', init: 'JB' },
+    'hs-lburden2':    { num: '10', init: 'LB' },
+    'hs-clewis':      { num: '—',  init: 'CL' },
+    'hs-owens':       { num: '30', init: 'GO' },
+    'hs-cbryant':     { num: '—',  init: 'CB' },
+    'hs-ehicks':      { num: '22', init: 'EH' },
+    'hs-elkin':       { num: '43', init: 'LE' },
+  };
+
+  Object.entries(placeholders).forEach(([id, info]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = svgAvatar(info.num, info.init);
+  });
+
+  /* ── Tab nav ── */
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -1065,7 +1605,7 @@
     });
   });
 
-  // Collapsible position rows
+  /* ── Collapsible position groups ── */
   document.querySelectorAll('.position-header').forEach(header => {
     header.addEventListener('click', () => {
       const chart = header.nextElementSibling;
